@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  app:
+    container_name: "app"
+    # environment:
+    #   MYSQL_DATABASE: ${MYSQL_DATABASE}
+    #   MYSQL_USER: ${MYSQL_USER}
+    #   MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    #   MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      # ローカルのappディレクトリをコンテナの/code/appにマウントしている
+      - type: bind
+        source: ./app
+        target: /code/app
+    build: .
+    ports:
+      - "8000:8000"
+#   db:
+#     image: mysql
+#     environment:
+#       MYSQL_DATABASE: ${MYSQL_DATABASE}
+#       MYSQL_USER: ${MYSQL_USER}
+#       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#       TZ: "Asia/Tokyo"
+#     volumes:
+#       - type: volume
+#         source: mysql_data
+#         target: /var/lib/mysql
+#     ports:
+#       - "3306:3306"
+
+# volumes:
+#   mysql_data:
