@@ -11,11 +11,6 @@ class ModelName(str, Enum):
 app = FastAPI()
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
 @app.get("/items/{item_id}")
 # This will not work if item_id is not an int
 async def read_item(item_id: int):
